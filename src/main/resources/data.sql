@@ -1,1 +1,1 @@
-insert into actor(id, name, description) values (1, 'Mark Hamill', 'Luke Skywalker forever')
+insert into conference(id, name, description, begins, ends, city) values (1, 'JBCNConf2017', 'Best Java conference in the world!', parsedatetime('19-06-2017','dd-mm-yyyy'), parsedatetime('21-06-2017','dd-mm-yyyy'), 'Barcelona')

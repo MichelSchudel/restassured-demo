@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource("classpath:test.properties")
-public class ActorCatalogueIT {
+public class ConferenceCatalogueIT {
 
     @Autowired
     private TestRestTemplate restTemplate;

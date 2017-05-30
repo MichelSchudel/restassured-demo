@@ -18,22 +18,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
-public class ActorControllerIT {
+public class ConferenceControllerIT {
 
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    private ActorRepository actorRepository;
+    private ConferenceRepository conferenceRepository;
 
     @Test
     public void exampleTest() throws Exception {
-        Actor actor = new Actor();
-        actor.setId(1L);
-        actor.setName("testActor");
-        actor.setDescription("just for test");
-        when(actorRepository.findAll()).thenReturn(Arrays.asList(actor));
-        this.mvc.perform(get("/actor").accept(MediaType.APPLICATION_JSON))
+        Conference conference = new Conference();
+        conference.setId(1L);
+        conference.setName("testActor");
+        conference.setDescription("just for test");
+        when(conferenceRepository.findAll()).thenReturn(Arrays.asList(conference));
+        this.mvc.perform(get("/conference").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andExpect(content().string("[{\"id\":1,\"name\":\"testActor\",\"description\":\"just for test\"}]"));
     }
 }
