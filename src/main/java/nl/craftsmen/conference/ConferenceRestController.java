@@ -36,12 +36,12 @@ public class ConferenceRestController {
     }
 
     @GetMapping(value = "/conference", params = {"id"})
-    public Conference getConferenceWithParam(@RequestParam Long id) {
+    public Conference getConferenceWithRequestParam(@RequestParam Long id) {
         return getConference(id);
     }
 
     @GetMapping("/conference/{id}")
-    public Conference getConferencewithrequestParam(@PathVariable Long id) {
+    public Conference getConferenceWithPathParam(@PathVariable Long id) {
         return getConference(id);
     }
 
