@@ -1,1 +1,2 @@
-insert into conference(id, name, description, begins, ends, city) values (1, 'JBCNConf2017', 'Best Java conference in the world!', parsedatetime('19-06-2017','dd-mm-yyyy'), parsedatetime('21-06-2017','dd-mm-yyyy'), 'Barcelona')
+insert into conference(id, name, description, begins, ends, city) values (1, 'JBCNConf2017', 'Best Java conference in the world!', parsedatetime('19-06-2017','dd-mm-yyyy'), parsedatetime('21-06-2017','dd-mm-yyyy'), 'Barcelona');
+insert into conference(id, name, description, begins, ends, city) values (2, 'Devoxx2017', 'Second best Java conference in the world!', parsedatetime('06-11-2017','dd-mm-yyyy'), parsedatetime('10-11-2017','dd-mm-yyyy'), 'Antwerp');

@@ -1,0 +1,4 @@
+Nieuwe class maken
+1. GET request, simpele statuscode checken.
+2. GET request, lengte lijst checken
+3. GET request, vinden we ergens een name met "JBCNConf2017"?
