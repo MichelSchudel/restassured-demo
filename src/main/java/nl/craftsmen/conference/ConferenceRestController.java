@@ -1,5 +1,7 @@
 package nl.craftsmen.conference;
 
+import javax.security.auth.login.Configuration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiImplicitParam;
@@ -27,22 +30,33 @@ public class ConferenceRestController {
         this.conferenceRepository = conferenceRepository;
     }
 
-    @GetMapping(value = "/conference")
-    public ResponseEntity<Iterable<Conference>> getAllConferences(@CookieValue(value="mycookie", required = false) String fooCookie) {
-        if (fooCookie != null) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-        return ResponseEntity.ok(conferenceRepository.findAll());
+    @GetMapping("/conference")
+    public Iterable<Conference> getAllConferences() {
+        return conferenceRepository.findAll();
+    }
+
+    @GetMapping(value = "/conference", params = {"id"})
+    public Conference getConferenceWithParam(@RequestParam Long id) {
+        return getConference(id);
     }
 
     @GetMapping("/conference/{id}")
-    public Conference getConference(@PathVariable Long id) {
-        return conferenceRepository.findOne(id);
+    public Conference getConferencewithrequestParam(@PathVariable Long id) {
+        return getConference(id);
     }
 
+    private Conference getConference(Long id) {
+        Conference conference = conferenceRepository.findOne(id);
+        if (conference == null) {
+            throw new NotFoundException();
+        } else {
+            return conference;
+        }
+    }
     @PostMapping("/conference")
-    public void saveConference(@RequestBody Conference conference) {
+    public Conference saveConference(@RequestBody Conference conference) {
         conferenceRepository.save(conference);
+        return conference;
     }
 
     @DeleteMapping("/conference/{id}")

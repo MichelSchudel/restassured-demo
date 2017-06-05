@@ -7,7 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -18,7 +20,9 @@ public class SpringBootRestIT {
     @LocalServerPort
     private int randomServerPort;
 
+    @Sql({"/insert-test-conference.sql"})
     @Test
+    @Rollback
     public void testJBCNConference() {
         given().
             port(randomServerPort).
@@ -27,7 +31,7 @@ public class SpringBootRestIT {
             get("/conference/{id}", 1).
         then().
             statusCode(200).
-            body("name", equalTo("JBCNConf2017"));
+            body("name", equalTo("TestConference"));
 
     }
 }

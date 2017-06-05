@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -40,15 +41,19 @@ public class TraditionalSpringIT {
     }
 
     @Test
+    @Sql({"/insert-test-conference.sql"})
+    @Rollback
     public void testJBCNConference() {
         RestAssuredMockMvc.when().
                 get("/conference/{id}", 1).
                 then().
                 statusCode(200).
-                body("name", equalTo("JBCNConf2017"));
+                body("name", equalTo("TestConference"));
     }
 
     @Test
+    @Sql({"/insert-test-conference.sql"})
+    @Rollback
     public void testAllConferencesSecure() {
         RestAssuredMockMvc.given()
                 .auth()
@@ -57,7 +62,7 @@ public class TraditionalSpringIT {
                 get("/secure/conference") //
                 .then() //
                 .statusCode(200) //
-                .body("findAll{it.name.startsWith('J')}.name", hasItems("JBCNConf2017"),
-                        "name[0]", equalTo("JBCNConf2017"));
+                .body("findAll{it.name.startsWith('T')}.name", hasItems("TestConference"),
+                        "name[0]", equalTo("TestConference"));
     }
 }
