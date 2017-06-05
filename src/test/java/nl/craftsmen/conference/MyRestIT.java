@@ -87,6 +87,31 @@ public class MyRestIT {
     }
 
     @Test
+    public void postDataIncomplete() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("description", "also pretty cool conference");
+        jsonObject.put("begins", LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        jsonObject.put("ends", LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        jsonObject.put("city", "ToBeDetermined");
+        given().contentType("application/json").body(jsonObject.toJSONString()).when().post("/conference").then().statusCode(400);
+    }
+
+    @Test
+    public void postDataWithObject() {
+        Conference conference = new Conference();
+        conference.setBegins(LocalDate.now());
+        conference.setEnds(LocalDate.now());
+        conference.setName("Yet another conference");
+        conference.setDescription("decription");
+        conference.setCity("dontknow");
+        String id = given().contentType("application/json").body(conference).when().post("/conference").then().log().all().statusCode(200).extract().path("id").toString();
+        System.out.println(id);
+        ResponseSpecBuilder happyResponse = new ResponseSpecBuilder();
+        happyResponse.expectStatusCode(200).expectContentType("application/json");
+        when().get("conference/{id}", id).then().spec(happyResponse.build()).body("name", equalTo("Yet another conference"));
+        when().delete("/conference/{id}", id).then().statusCode(200);
+    }
+    @Test
     public void testSecure() {
         given().auth().basic("admin", "admin").when().get("secure/conference").then().statusCode(200).log().all();
     }

@@ -1,6 +1,7 @@
 package nl.craftsmen.conference;
 
 import javax.security.auth.login.Configuration;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,7 +55,7 @@ public class ConferenceRestController {
         }
     }
     @PostMapping("/conference")
-    public Conference saveConference(@RequestBody Conference conference) {
+    public Conference saveConference(@Valid @RequestBody Conference conference) {
         conferenceRepository.save(conference);
         return conference;
     }

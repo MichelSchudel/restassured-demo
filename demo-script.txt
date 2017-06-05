@@ -1,14 +1,16 @@
 Nieuwe class maken
-- GET request, simpele statuscode checken.
-- GET request, logging toevoegen
-- GET request, lengte lijst checken
+- GET request test 1, simpele statuscode checken.
+- GET request test 1, logging toevoegen
+- GET request test 1, lengte lijst checken
 - GET request, naam van het eerste element checken
-- GET request, nu met content type en accept header application/xml. Assert op ArrayList doen.
 - GET request, vinden we ergens een name met "JBCNConf2017"? Met findAll
+- GET request, nu met content type en accept header application/xml. Assert op ArrayList doen.
+
 - GET request naar 1 specifieke conferentie, met pathParam
 - GET request maken naar 1 specifieke conferentie, met queryParam. Uitleggen dat RestAssured dit automatisch vertaalt naar juiste soort param.
 - GET request, data extraction
 - GET request, timing checken met timing param. Alternatief middels ContiPerf laten zien.
+    - Optie: Hergebruik van RequestSpecBuilder en ResponseSpecBuilder laten zien.
 
 
 POST request
@@ -21,7 +23,6 @@ POST request
     - Gebruiken om nogmaals een GET te doen naar hetzelfde id en checken of de naam klopt
     - DELETE actie schrijven die het object weer weghaalt, status code checken.
     - Opmerking maken dat REST-assured geen support heeft voor transacties. Dit is out-of-process en moet je zelf regelen.
-    - Optie: Hergebruik van RequestSpecBuilder en ResponseSpecBuilder laten zien.
 
 Authenticatie
 - GET endpoint secure benaderen en laten zien dat dit faalt
