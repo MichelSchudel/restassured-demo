@@ -2,10 +2,14 @@ package nl.craftsmen.conference;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.lessThan;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
+import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +22,6 @@ public class MyConferenceRestIT {
 
     @Before
     public void setup() {
-
     }
 
     @Test
@@ -59,12 +62,15 @@ public class MyConferenceRestIT {
     }
 
     @Test
+    public void getConferenceResponseSpecBuilder() {
+    }
+
+    @Test
     public void getConferenceWithPathParamIdOneShouldNotTakeLongerThanOneSecond() {
     }
 
     @Test
     public void getConferencesOnSecurePathNeedsAuthentication() {
-        //test with basic authentication
     }
 
     @Test
@@ -81,7 +87,6 @@ public class MyConferenceRestIT {
 
     @Test
     public void postIncompleteConferenceShouldResultInStatusBadRequest() {
-        //test with basic authentication
     }
 
 }
