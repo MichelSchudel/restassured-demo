@@ -1,4 +1,4 @@
-package nl.actorcatalogue;
+package nl.craftsmen.conference;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -6,9 +6,6 @@ import java.time.LocalDate;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-/**
- * Created by michel on 5/28/2017.
- */
 @Converter(autoApply = true)
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
     @Override

@@ -1,4 +1,4 @@
-package nl.actorcatalogue;
+package nl.craftsmen.conference;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

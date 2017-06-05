@@ -1,4 +1,4 @@
-package nl.actorcatalogue;
+package nl.craftsmen.conference;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

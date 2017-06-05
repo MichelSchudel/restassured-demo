@@ -1,4 +1,4 @@
-package nl.actorcatalogue;
+package nl.craftsmen.conference;
 
 import java.time.LocalDate;
 

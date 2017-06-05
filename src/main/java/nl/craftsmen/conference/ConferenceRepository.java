@@ -1,4 +1,4 @@
-package nl.actorcatalogue;
+package nl.craftsmen.conference;
 
 import org.springframework.data.repository.CrudRepository;
 
