@@ -30,10 +30,10 @@ public class ConferenceControllerIT {
     public void exampleTest() throws Exception {
         Conference conference = new Conference();
         conference.setId(1L);
-        conference.setName("testActor");
+        conference.setName("testConference");
         conference.setDescription("just for test");
         when(conferenceRepository.findAll()).thenReturn(Arrays.asList(conference));
         this.mvc.perform(get("/conference").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andExpect(content().string("[{\"id\":1,\"name\":\"testActor\",\"description\":\"just for test\"}]"));
+                .andExpect(status().isOk()).andExpect(content().string("[{\"id\":1,\"name\":\"testConference\",\"description\":\"just for test\"}]"));
     }
 }

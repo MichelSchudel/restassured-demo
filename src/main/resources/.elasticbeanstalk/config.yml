@@ -1,2 +1,2 @@
 deploy:
-    artifact: target/actorcatalogue-1.0-SNAPSHOT.jar
+    artifact: target/restassured-demo-1.0-SNAPSHOT.jar
