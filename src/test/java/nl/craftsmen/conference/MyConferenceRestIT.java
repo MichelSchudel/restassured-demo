@@ -34,6 +34,7 @@ public class MyConferenceRestIT {
 
     @Test
     public void getToConferenceServiceShouldRetrieveAllConferences() {
+        //name
         //test list length
     }
 
