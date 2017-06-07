@@ -1,6 +1,7 @@
 package nl.craftsmen.conference;
 
 import static io.restassured.RestAssured.*;
+import static io.restassured.path.json.JsonPath.from;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
+import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.junit.Before;
@@ -28,34 +30,17 @@ public class MyConferenceRestIT {
     public void getToConferenceServiceShouldProduceHappyResponse() {
         //test status code
         //logging
-        //extract
-        //extract path
     }
 
     @Test
-    public void getToConferenceServiceShouldRetrieveAllConferences() {
-        //name
-        //test list length
-    }
-
-    @Test
-    public void getToConferenceServiceShouldContainJBCNConference() {
-        //test by find or first elem
-    }
-
-    @Test
-    public void getToConferenceServiceWithXmlContentTypeShouldRetrieveAllConferences() {
-        //test with content type or header
-        //assert on ArrayList
-    }
-
-    @Test
-    public void getConferenceWithPathParamIdOneShouldProduceJBCNConf() {
+    public void getConferenceWithDifferentParamsProduceHappyResponse() {
         //explicit and inline
+        //query param
+        //param
     }
 
     @Test
-    public void getConferenceWithQueryParamIdOneShouldProduceJBCNConf() {
+    public void getConferencesOnSecurePathNeedsAuthentication() {
     }
 
     @Test
@@ -63,16 +48,13 @@ public class MyConferenceRestIT {
     }
 
     @Test
-    public void getConferenceResponseSpecBuilder() {
-    }
-
-    @Test
     public void getConferenceWithPathParamIdOneShouldNotTakeLongerThanOneSecond() {
     }
 
     @Test
-    public void getConferencesOnSecurePathNeedsAuthentication() {
+    public void getConferenceResponseSpecBuilderForParam() {
     }
+
 
     @Test
     public void postConferenceShouldResultInStatusOk() {
@@ -84,10 +66,13 @@ public class MyConferenceRestIT {
         //extract id
         //get
         //delete
+
     }
 
     @Test
     public void postIncompleteConferenceShouldResultInStatusBadRequest() {
     }
+
+
 
 }

@@ -15,8 +15,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@XmlRootElement(name = "conference")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Conference {
 
 
