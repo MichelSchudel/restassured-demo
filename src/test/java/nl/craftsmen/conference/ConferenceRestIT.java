@@ -110,25 +110,24 @@ public class ConferenceRestIT {
     @Test
     public void testAddConferenceWithObject() {
         Conference conference = new Conference();
-        conference.setName("Devoxx");
-        conference.setDescription("pretty cool,too!");
-        conference.setBegins(LocalDate.parse("2017-11-06").now());
-        conference.setEnds(LocalDate.parse("2017-11-10"));
-        conference.setCity("Antwerp");
+        conference.setName("JFall2107");
+        conference.setDescription("best conference in the Netherlands!");
+        conference.setBegins(LocalDate.parse("2017-11-02"));
+        conference.setEnds(LocalDate.parse("2017-11-02"));
+        conference.setCity("Ede");
         given().body(conference).contentType(ContentType.JSON).when().post("/conference").then().statusCode(200);
     }
 
     @Test
     public void testAddConference() throws JSONException {
-        String body = new JSONObject()
-                .put("name", " Devoxx") //
-                .put("description", "pretty cool") //
-                .put("begins", LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))) //
-                .put("ends", LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))) //
-                .put("city", "Barcelona") //
-                .toString();
+        JSONObject conference = new JSONObject()
+                .put("name", " JFall2017") //
+                .put("description", "best conference in the Netherlands!") //
+                .put("begins", LocalDate.parse("2017-11-02")) //
+                .put("ends", LocalDate.parse("2017-11-02")) //
+                .put("city", "Ede");
         given()
-                .body(body) //
+                .body(conference) //
                 .contentType(ContentType.JSON) //
                 .when() //
                 .post("/conference") //

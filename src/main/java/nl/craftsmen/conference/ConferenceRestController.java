@@ -57,9 +57,13 @@ public class ConferenceRestController {
     }
 
     @DeleteMapping("/conference/{id}")
-    public void deleteConference(@PathVariable Long id) {
+    public void deleteConferenceWithPathParam(@PathVariable Long id) {
         conferenceRepository.delete(id);
     }
 
+    @DeleteMapping(value = "/conference",params = {"id"})
+    public void deleteConferenceWithRequestParam(@RequestParam Long id) {
+        conferenceRepository.delete(id);
+    }
 
 }
