@@ -39,17 +39,25 @@ public class SpringBootRestWireMockIT {
 
     @Before
     public void setup() {
-        URI uri = URI.create(speakerEndpoint);
-        wireMockServer = new WireMockServer(options().port(uri.getPort()));
-        wireMockServer.start();
+        startWireMockServer();
+        wireMockServer.stubFor(get(anyUrl()).willReturn(buildResponse()));
+
+    }
+
+    private ResponseDefinitionBuilder buildResponse() {
         JSONArray jsonArray = new JSONArray();
         ResponseDefinitionBuilder responseDefinitionBuilder = new ResponseDefinitionBuilder();
         JSONObject speaker = new JSONObject();
         speaker.put("name", "Michel Schudel");
         jsonArray.add(speaker);
         responseDefinitionBuilder.withBody(jsonArray.toString()).withStatus(200).withHeader("Content-Type", "application/json");
-        wireMockServer.stubFor(get(anyUrl()).willReturn(responseDefinitionBuilder));
+        return responseDefinitionBuilder;
+    }
 
+    private void startWireMockServer() {
+        URI uri = URI.create(speakerEndpoint);
+        wireMockServer = new WireMockServer(options().port(uri.getPort()));
+        wireMockServer.start();
     }
 
     @After
@@ -62,13 +70,13 @@ public class SpringBootRestWireMockIT {
     @Rollback
     public void testJBCNConference() {
         given().
-            port(randomServerPort).
-            log().all().
+                port(randomServerPort).
         when().
-            get("/conference/{id}", 1).
+            get("/conferencewithspeakers/{id}", 1).
         then().
+            log().all().
             statusCode(200).
-            body("name", equalTo("TestConference"));
+            body("speakers[0].name", equalTo("Michel Schudel"));
 
     }
 }
