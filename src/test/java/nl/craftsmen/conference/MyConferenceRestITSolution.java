@@ -124,7 +124,7 @@ public class MyConferenceRestITSolution {
         conference.setDescription("decription");
         conference.setCity("dontknow");
 
-        int id = given().contentType("application/json").log().all().body(conference).when().log().all().post("/conference").then().statusCode(200)
+        int id = given().contentType("application/json").log().all().body(conference).when().post("/conference").then().log().all().statusCode(200)
         .extract().path("id");
         when().get("conference/{id}", id).then().spec(defaultAsserts.build());
         when().delete("conference/{id}", id).then().statusCode(200);

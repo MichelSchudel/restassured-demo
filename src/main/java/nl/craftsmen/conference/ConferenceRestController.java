@@ -1,20 +1,16 @@
 package nl.craftsmen.conference;
 
-import javax.security.auth.login.Configuration;
-import javax.validation.Valid;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Api
 @RestController
@@ -22,9 +18,15 @@ public class ConferenceRestController {
 
     private ConferenceRepository conferenceRepository;
 
+    @Value("${service.speaker.endpoint}")
+    private String speakerServiceEndpoint;
+
+    private RestTemplate restTemplate;
+
     @Autowired
-    public ConferenceRestController(final ConferenceRepository conferenceRepository) {
+    public ConferenceRestController(final ConferenceRepository conferenceRepository, RestTemplate restTemplate) {
         this.conferenceRepository = conferenceRepository;
+        this.restTemplate = restTemplate;
     }
 
     @GetMapping("/conference")
@@ -50,6 +52,7 @@ public class ConferenceRestController {
             return conference;
         }
     }
+
     @PostMapping("/conference")
     public Conference saveConference(@Valid @RequestBody Conference conference) {
         conferenceRepository.save(conference);
@@ -61,9 +64,19 @@ public class ConferenceRestController {
         conferenceRepository.delete(id);
     }
 
-    @DeleteMapping(value = "/conference",params = {"id"})
+    @DeleteMapping(value = "/conference", params = {"id"})
     public void deleteConferenceWithRequestParam(@RequestParam Long id) {
         conferenceRepository.delete(id);
     }
 
+    @GetMapping("/conferencewithspeakers/{id}")
+    public Conference getConferenceWithSepakersWithPathParam(@PathVariable Long id) {
+        Conference conference = getConference(id);
+
+        ResponseEntity<List<Speaker>> response = restTemplate.exchange(speakerServiceEndpoint + "/speaker",
+                HttpMethod.GET, null, new ParameterizedTypeReference<List<Speaker>>() {
+                });
+        conference.setSpeakers(response.getBody());
+        return conference;
+    }
 }

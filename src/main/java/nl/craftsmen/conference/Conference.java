@@ -1,15 +1,18 @@
 package nl.craftsmen.conference;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -32,6 +35,17 @@ public class Conference {
     private LocalDate ends;
     @NotEmpty
     private String city;
+    @Transient
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Speaker> speakers;
+
+    public List<Speaker> getSpeakers() {
+        return speakers;
+    }
+
+    public void setSpeakers(List<Speaker> speakers) {
+        this.speakers = speakers;
+    }
 
     public Long getId() {
         return id;

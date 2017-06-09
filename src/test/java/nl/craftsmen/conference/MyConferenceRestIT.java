@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
+import io.restassured.specification.ProxySpecification;
 import org.json.simple.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +30,8 @@ public class MyConferenceRestIT {
     @Test
     public void getToConferenceServiceShouldProduceHappyResponse() {
         //test status code
+
+     
         //logging
     }
 
