@@ -9,7 +9,9 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
+import io.restassured.path.json.JsonPath;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -21,6 +23,26 @@ import io.restassured.http.ContentType;
 
 public class ConferenceRestIT {
 
+    @Test
+    public void allInOne() {
+        String s = given()
+                .log()
+                .all()
+                .when()
+                .get("/conference")
+                .then()
+                .log()
+                .ifValidationFails()
+                .statusCode(200)
+                .body("name[0]" ,equalTo("JBCNConf2017"))
+                .body("findAll{it.name.startsWith('J')}.name" ,hasItems("JBCNConf2017"))
+                .body("findAll{c -> c.name.startsWith('J')}.name" ,hasItems("JBCNConf2017"))
+                .extract().response().asString();
+        JsonPath jsonPath = new JsonPath(s);
+        Map map = jsonPath.get("find{e-> e.name = 'JBCNConf2017'}");
+        System.out.println(map.get("name"));
+
+    }
     @Test
     public void testJBCNConference() {
         when().

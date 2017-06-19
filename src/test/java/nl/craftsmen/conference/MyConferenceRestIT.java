@@ -4,13 +4,16 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.path.json.JsonPath.from;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasXPath;
 import static org.hamcrest.Matchers.lessThan;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.restassured.parsing.Parser;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.ProxySpecification;
 import org.json.simple.JSONObject;
@@ -23,32 +26,26 @@ import io.restassured.builder.RequestSpecBuilder;
 
 public class MyConferenceRestIT {
 
+    private static final String JBCNCONF2017 = "JBCNConf2017";
+
     @Before
     public void setup() {
     }
 
     @Test
-    public void getToConferenceServiceShouldProduceHappyResponse() {
-        //test status code
+    public void getToConferenceServiceShouldProduceCorrectResponse() {
 
-     
-        //logging
     }
 
     @Test
     public void getConferenceWithDifferentParamsProduceHappyResponse() {
-        //explicit and inline
-        //query param
-        //param
+
     }
 
     @Test
     public void getConferencesOnSecurePathNeedsAuthentication() {
     }
 
-    @Test
-    public void getConferenceWithQueryParamIdUnknownShouldProduce404() {
-    }
 
     @Test
     public void getConferenceWithPathParamIdOneShouldNotTakeLongerThanOneSecond() {
