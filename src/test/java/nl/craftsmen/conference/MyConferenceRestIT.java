@@ -26,7 +26,7 @@ import io.restassured.builder.RequestSpecBuilder;
 
 public class MyConferenceRestIT {
 
-    private static final String DEVOXX2018 = "Devoxx2018";
+    private static final String DEVOXX2017 = "Devoxx2017";
 
     @Before
     public void setup() {
@@ -34,7 +34,6 @@ public class MyConferenceRestIT {
 
     @Test
     public void getToConferenceServiceShouldProduceCorrectResponse() {
-
     }
 
     @Test
