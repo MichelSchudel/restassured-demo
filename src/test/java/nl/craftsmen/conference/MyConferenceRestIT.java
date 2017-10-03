@@ -26,7 +26,7 @@ import io.restassured.builder.RequestSpecBuilder;
 
 public class MyConferenceRestIT {
 
-    private static final String JBCNCONF2017 = "JBCNConf2017";
+    private static final String DEVOXX2018 = "Devoxx2018";
 
     @Before
     public void setup() {
