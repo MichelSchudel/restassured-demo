@@ -12,18 +12,21 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ConferenceApplication.class})
 @WebAppConfiguration
-public class TraditionalSpringIT {
+@TestPropertySource("classpath:test.properties")
+public class TraditionalSpringITSolution {
 
     @Autowired
     private WebApplicationContext context;
@@ -43,7 +46,7 @@ public class TraditionalSpringIT {
     @Test
     @Sql({"/insert-test-conference.sql"})
     @Rollback
-    public void testJBCNConference() {
+    public void conferenceWithId1ShouldReturnTheTestConference() {
         RestAssuredMockMvc.when().
                 get("/conference/{id}", 1).
                 then().
@@ -54,7 +57,7 @@ public class TraditionalSpringIT {
     @Test
     @Sql({"/insert-test-conference.sql"})
     @Rollback
-    public void testAllConferencesSecure() {
+    public void secureConferenceGivenCredentialsShouldReturnAllConferences() {
         RestAssuredMockMvc.given()
                 .auth()
                 .with(httpBasic("admin", "admin")).

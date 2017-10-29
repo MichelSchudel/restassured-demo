@@ -27,7 +27,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource("classpath:test.properties")
-public class SpringBootRestWireMockIT {
+public class SpringBootRestWireMockITSolution {
 
     @LocalServerPort
     private int randomServerPort;
@@ -68,7 +68,7 @@ public class SpringBootRestWireMockIT {
     @Sql({"/insert-test-conference.sql"})
     @Test
     @Rollback
-    public void testJBCNConference() {
+    public void conferenceWithSpeakersShouldReturnSpeaker() {
         given().
                 port(randomServerPort).
         when().
