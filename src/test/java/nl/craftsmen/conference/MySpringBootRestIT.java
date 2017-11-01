@@ -20,5 +20,6 @@ public class MySpringBootRestIT {
     @Test
     public void conferenceWithId1ShouldReturnTheTestConference() {
 
+
     }
 }
