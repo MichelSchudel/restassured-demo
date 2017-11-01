@@ -27,10 +27,6 @@ public class MyTraditionalSpringIT {
 
     //insert appcontext
 
-
-    @Autowired
-    private WebApplicationContext context;
-
     @Before
     public void
     rest_assured_is_initialized_with_the_web_application_context_before_each_test() {
