@@ -18,6 +18,7 @@ import static org.hamcrest.Matchers.lessThan;
 
 public class MyConferenceRestITSolution {
 
+    public static final String CONFERENCE = "JBCNConf2017";
     private ResponseSpecBuilder defaultAsserts;
     @Before
     public void setup() {
@@ -92,7 +93,7 @@ public class MyConferenceRestITSolution {
     @Test
     public void getConferenceWithQueryParamIdUnknownShouldProduce404() {
         given().queryParam("id", 1).when().get("conference/{id}", 1).then()
-                .body("name", equalTo("JBCNConf2017"));
+                .body("name", equalTo(CONFERENCE));
     }
 
     @Test
