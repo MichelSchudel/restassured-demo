@@ -1,4 +1,4 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

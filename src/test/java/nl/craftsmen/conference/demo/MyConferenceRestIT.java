@@ -1,4 +1,4 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.demo;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.path.json.JsonPath.from;
@@ -49,10 +49,6 @@ public class MyConferenceRestIT {
 
     @Test
     public void getConferenceWithPathParamIdOneShouldNotTakeLongerThanOneSecond() {
-    }
-
-    @Test
-    public void getConferenceResponseSpecBuilderForParam() {
     }
 
 

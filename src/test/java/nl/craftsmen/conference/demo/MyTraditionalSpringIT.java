@@ -1,6 +1,7 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.demo;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
+import nl.craftsmen.conference.ConferenceApplication;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
