@@ -25,7 +25,7 @@ import io.restassured.module.mockmvc.RestAssuredMockMvc;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ConferenceApplication.class})
 @WebAppConfiguration
-@TestPropertySource("classpath:test.properties")
+@TestPropertySource("classpath:application.properties")
 public class TraditionalSpringITSolution {
 
     @Autowired

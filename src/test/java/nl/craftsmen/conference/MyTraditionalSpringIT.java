@@ -22,7 +22,6 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ConferenceApplication.class})
 @WebAppConfiguration
-@TestPropertySource("classpath:test.properties")
 public class MyTraditionalSpringIT {
 
     //insert appcontext
