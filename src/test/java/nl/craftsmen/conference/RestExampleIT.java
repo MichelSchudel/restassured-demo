@@ -17,7 +17,7 @@ import org.springframework.http.HttpStatus;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 
-public class MyRestIT {
+public class RestExampleIT {
 
     @Test
     public void testStatusCode() {

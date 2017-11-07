@@ -1,7 +1,8 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.solution;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.response.Response;
+import nl.craftsmen.conference.Conference;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
 
-public class MyConferenceRestITSolution {
+public class SolutionConferenceRestIT {
 
     public static final String CONFERENCE = "JBCNConf2017";
     private ResponseSpecBuilder defaultAsserts;

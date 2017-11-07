@@ -1,4 +1,4 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.solution;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
@@ -27,7 +27,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@TestPropertySource("classpath:test.properties")
-public class SpringBootRestWireMockITSolution {
+public class SolutionSpringBootRestWireMockIT {
 
     @LocalServerPort
     private int randomServerPort;

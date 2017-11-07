@@ -1,4 +1,4 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.solution;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@TestPropertySource("classpath:test.properties")
-public class SpringBootRestITSolution {
+public class SolutionSpringBootRestIT {
 
     @LocalServerPort
     private int randomServerPort;
