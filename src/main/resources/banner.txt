@@ -1,7 +1,5 @@
--ddhhhhhhhhhhhy:  -ddhhhhhhhhhhh: ody.          -dd: .shhhhhhhhhhhh+  .sdo.   -::+dy:   `::. -:o:: 
- -Mm``````````-MN` :Mm...........`  /mm/       `oNd-  dM/`````````.dM:   -yms. .smds.  .:/-`   `` ` 
- -Mm           NM` :MN+++++++++++.   .hMs`    -dNo`   mM.          yM/     .sNhNh:`./:::.           
- -Mm           NM` :MNooooooooooo`     +Nm:  +Nd-     mM.          yM/     -ymymd/`-/::/.`          
- -Mm``````````-MN` :Mm````````````      .hNshMs`      dM/`````````.dM:   :hms. `os/o.  .:/-`        
- .ddhhhhhhhhhhhy:  -mmdddddddddddy       `+md:        .yhhhhhhhhhhhh+  -ydo`  `-:-:hh/   `-:-       
-                    `````````````          `                                                        
+____  ____   _____/ ____\___________   ____   ____   ____  ____
+_/ ___\/  _ \ /    \   __\/ __ \_  __ \_/ __ \ /    \_/ ___\/ __ \
+\  \__(  <_> )   |  \  | \  ___/|  | \/\  ___/|   |  \  \__\  ___/
+ \___  >____/|___|  /__|  \___  >__|    \___  >___|  /\___  >___  >
+     \/           \/          \/            \/     \/     \/    \/

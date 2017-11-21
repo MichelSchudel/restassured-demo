@@ -1,10 +1,11 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.solution;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItems;
 
+import nl.craftsmen.conference.ConferenceApplication;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,8 +26,8 @@ import io.restassured.module.mockmvc.RestAssuredMockMvc;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ConferenceApplication.class})
 @WebAppConfiguration
-@TestPropertySource("classpath:test.properties")
-public class TraditionalSpringITSolution {
+@TestPropertySource("classpath:application.properties")
+public class SolutionTraditionalSpringIT {
 
     @Autowired
     private WebApplicationContext context;

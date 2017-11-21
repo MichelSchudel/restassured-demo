@@ -1,7 +1,8 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.solution;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.response.Response;
+import nl.craftsmen.conference.Conference;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -16,8 +17,9 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
 
-public class MyConferenceRestITSolution {
+public class SolutionConferenceRestIT {
 
+    public static final String CONFERENCE = "JBCNConf2017";
     private ResponseSpecBuilder defaultAsserts;
     @Before
     public void setup() {
@@ -92,7 +94,7 @@ public class MyConferenceRestITSolution {
     @Test
     public void getConferenceWithQueryParamIdUnknownShouldProduce404() {
         given().queryParam("id", 1).when().get("conference/{id}", 1).then()
-                .body("name", equalTo("JBCNConf2017"));
+                .body("name", equalTo(CONFERENCE));
     }
 
     @Test

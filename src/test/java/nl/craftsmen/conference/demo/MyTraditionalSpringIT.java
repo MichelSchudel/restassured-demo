@@ -1,6 +1,7 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.demo;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
+import nl.craftsmen.conference.ConferenceApplication;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,14 +23,9 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ConferenceApplication.class})
 @WebAppConfiguration
-@TestPropertySource("classpath:test.properties")
 public class MyTraditionalSpringIT {
 
     //insert appcontext
-
-
-    @Autowired
-    private WebApplicationContext context;
 
     @Before
     public void

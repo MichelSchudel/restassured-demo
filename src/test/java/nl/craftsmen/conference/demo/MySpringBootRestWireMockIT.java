@@ -1,4 +1,4 @@
-package nl.craftsmen.conference;
+package nl.craftsmen.conference.demo;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
@@ -26,43 +26,23 @@ import static org.hamcrest.CoreMatchers.equalTo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource("classpath:test.properties")
-public class SpringBootRestWireMockITSolution {
+public class MySpringBootRestWireMockIT {
 
     @LocalServerPort
     private int randomServerPort;
 
-    @Value("${service.speaker.endpoint}")
-    private String speakerEndpoint;
+    //inject speaker service endpoint
 
     private WireMockServer wireMockServer;
 
     @Before
     public void setup() {
-        startWireMockServer();
-        wireMockServer.stubFor(get(anyUrl()).willReturn(buildResponse()));
-
-    }
-
-    private ResponseDefinitionBuilder buildResponse() {
-        JSONArray jsonArray = new JSONArray();
-        ResponseDefinitionBuilder responseDefinitionBuilder = new ResponseDefinitionBuilder();
-        JSONObject speaker = new JSONObject();
-        speaker.put("name", "Michel Schudel");
-        jsonArray.add(speaker);
-        responseDefinitionBuilder.withBody(jsonArray.toString()).withStatus(200).withHeader("Content-Type", "application/json");
-        return responseDefinitionBuilder;
-    }
-
-    private void startWireMockServer() {
-        URI uri = URI.create(speakerEndpoint);
-        wireMockServer = new WireMockServer(options().port(uri.getPort()));
-        wireMockServer.start();
+        //setup wiremock
     }
 
     @After
     public void tearDown() {
-        wireMockServer.stop();
+        //eardown wiremock
     }
 
     @Sql({"/insert-test-conference.sql"})
